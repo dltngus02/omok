@@ -1,12 +1,14 @@
 import React, { useEffect, useReducer, useCallback } from "react";
 import Td from "./Td";
-const Tr = ({ rowData, rowIndex, dispatch }) => {
+import "./Tr.css";
+const Tr = ({ rowData, rowIndex, dispatch, tableTurn }) => {
   return (
     <tr>
       {Array(rowData.length)
         .fill()
         .map((td, i) => (
           <Td
+            tableTurn={tableTurn}
             cellData={rowData[i]}
             dispatch={dispatch}
             key={i}

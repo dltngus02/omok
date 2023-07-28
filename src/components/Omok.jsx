@@ -111,20 +111,7 @@ const Omok = () => {
         }
       }
     }
-    count = 0;
-    if (!win) {
-      for (var i = minrow; i < maxrow + 1; i++) {
-        if (state.tableData[i][cell] === t) {
-          count += 1;
-        } else {
-          count = 0;
-        }
-        if (count >= 5) {
-          win = true;
-          break;
-        }
-      }
-    }
+
     count = 0;
     const minv = row > cell ? cell : row;
     const maxv = row > cell ? row : cell;
@@ -148,7 +135,7 @@ const Omok = () => {
     }
     minrow = row + cell > 9 ? row - (9 - cell) : 0;
     mincell = row + cell > 9 ? 9 : row + cell;
-
+    count = 0;
     if (!win) {
       for (var i = 0; i < mincell - minrow + 1; i++) {
         if (state.tableData[minrow + i][mincell - i] === t) {
@@ -163,9 +150,13 @@ const Omok = () => {
       }
     }
     if (win) {
-      console.log(t, "승리");
-      setWinner(t);
-      dispatch({ type: RESET_GAME });
+      setTimeout(() => {
+        setWinner(t);
+        alert(`${state.turn == "X" ? "흰돌" : "검은돌"}우승`);
+      }, 10);
+      setTimeout(() => {
+        dispatch({ type: RESET_GAME });
+      }, 10);
     } else {
       let all = true;
       state.tableData.forEach((row) => {
@@ -176,6 +167,7 @@ const Omok = () => {
         });
       });
       if (all === true) {
+        alert(`${t}승리`);
         dispatch({ type: RESET_GAME });
       }
     }
@@ -187,9 +179,9 @@ const Omok = () => {
         dispatch={dispatch}
         onClick={onClickTable}
         tableData={state.tableData}
+        tableTurn={state.turn}
       />
-      {winner && <div>{winner}승리</div>}
-      <button onClick={onClickBtn}>초기화 할까유?</button>
+      <button onClick={onClickBtn}>리셋</button>
     </>
   );
 };

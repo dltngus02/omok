@@ -1,6 +1,32 @@
-td {
-  border: 1px solid black;
+.td {
+  /* border: 1px solid black; */
+  width: 40px;
+  height: 40px;
+}
+
+#omokBoard {
   width: 40px;
   height: 40px;
   text-align: center;
+  background-image: url("./바둑바둑.png");
+  background-size: cover;
 }
+#turno {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  background-image: url("./white.png");
+  background-size: cover;
+}
+#turnx {
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  background-image: url("./검은원.png");
+  background-size: cover;
+}
+/* .block {
+  width: 40px;
+  height: 2\0px;
+  background-color: antiquewhite;
+} */

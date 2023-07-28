@@ -1,4 +1,3 @@
-import "./App.css";
 import Omok from "./components/Omok";
 
 function App() {
